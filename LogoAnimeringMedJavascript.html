@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<header>
+	</header>
+	<body class="body">
+<div id="anim">  
+</div>
+<style>
+#anim {
+  width: 35px; height: 30px;
+  background-image: url(https://i.ibb.co/0srwKC5/Lyricabildeanimasjonheltny.png);
+  background-repeat: no-repeat;
+}
+.body {
+    background-color: orange;
+}
+</style>
+
+<script>
+var scrollUp = (function () {
+  var timerId; // timer i tilfelle jeg skal bruke clearinterval senere.
+
+  return function (height, times, element) {
+    element.onmouseover = () => {
+      var i = 0; // en enkel teller
+      timerId = setInterval(function () {
+        if (i > times) // hvis den kommer til siste frame, restart
+          i = 0;
+        element.style.backgroundPosition = "0px -" + i * height + 'px'; //skroller opp
+        i++;
+
+      }, 160); // hvert 160 millisekunder
+    };
+    element.onmouseout = () => {
+    clearInterval(timerId)
+    .exit
+    };
+  };
+})();
+// starter animasjonen:
+scrollUp(30, 5, document.getElementById('anim'))
+var wink = new SpriteAnim({
+  width: 30,
+  height: 35,
+  frames: 200,
+  sprite: "https://i.ibb.co/0srwKC5/Lyricabildeanimasjonheltny.png",
+  elementId : "anim1"
+});
+</script>
+</body>
+</html>
